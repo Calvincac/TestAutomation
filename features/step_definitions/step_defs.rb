@@ -31,7 +31,8 @@ And /^i enter (.*) in the task description field and hit enter$/ do |task_descri
 end
 
 And /^i should see (.*) task created in the Created Tasks list$/ do |task_name|
-	tasks_helper.text_found?(task_name, tasks_page.class::TASKS_CREATED)
+	task = tasks_helper.text_found?(task_name, tasks_page.class::TASKS_CREATED)
+	expect(task).to be true  
 end
 
 And /^i enter (.*) in the task description field and click on Add Task button$/ do |description|
