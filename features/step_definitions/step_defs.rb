@@ -1,31 +1,42 @@
 
+home_page    = AvenueCode::HomePage.new
+login_page   = AvenueCode::LoginPage.new
+tasks_helper = AvenueCode::TasksHelper.new
+tasks_page   = AvenueCode::TasksPage.new
+
 
 Given /^I'm already logged on the system$/ do
-	byebug
+	visit 'https://qa-test.avenuecode.com/'
+	home_page.sign_in_button.click
+	login_page.email.set('calvincac@hotmail.com')
+	login_page.password.set('avenuecode')
+	login_page.sign_in.click	
 end
 
-When /^i click on (.*))$/ do |button|
-	byebug
+When /^i click on (.*) button$/ do |button|
+	tasks_helper.click_button(button)
 end
 
-Then /^i should see all the created tasks so far)$/ do
-	byebug
+Then /^i should see all the created tasks so far$/ do
+	page.should have_css tasks_page.class::TASKS_CREATED
 end
 
-Then /^i should see message (.*) on the top)$/ do |message|
-	byebug
+Then /^i should see message (.*) on the top$/ do |message|
+	expect(message).to eq tasks_page.header.text
 end
 
-And /^i enter (.*) in the task description field and hit enter)$/ do |task_description|
-	byebug
+And /^i enter (.*) in the task description field and hit enter$/ do |task_description|
+	tasks_page.new_task.set(task_description)
+	tasks_page.new_task.send_keys :enter
 end
 
 And /^i should see (.*) task created in the Created Tasks list$/ do |task_name|
-	byebug
+	tasks_helper.text_found?(task_name, tasks_page.class::TASKS_CREATED)
 end
 
 And /^i enter (.*) in the task description field and click on Add Task button$/ do |description|
-	byebug
+	tasks_page.new_task.set(description)
+	tasks_page.add_task.click
 end
 
 Then /^i should see a modal dialog$/ do

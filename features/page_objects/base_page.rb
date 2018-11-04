@@ -4,8 +4,6 @@ module AvenueCode
         
         include RSpec::Matchers
         include Capybara::DSL
-
-        
     end
 end
 

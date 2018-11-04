@@ -1,4 +1,4 @@
-@todo_app @check_tasks
+@todo_app @check_subtasks
 
 Feature: As a ToDo App user
          I should be able to create a subtask
@@ -17,7 +17,7 @@ Feature: As a ToDo App user
     And i click on Add Subtask button
     Then i should see subtask Subtask desc appended on the bottom part of the modal
 
-  @create_subtask @manage_subtaks
+  @manage_subtaks
   Scenario: User should see the number of subtasks created on Manage Subtasks button
     Given I'm already logged on the system 
     When i click on My Tasks button
