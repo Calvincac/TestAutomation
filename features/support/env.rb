@@ -23,8 +23,7 @@ caps[:unexpectedAlertBehaviour] = 'accept'
 caps[:javascriptEnable] = false
 
 prefs = {
-  prompt_for_download: false,
-  default_directory: $invoices_directory
+  prompt_for_download: false
 }
 
 options = Selenium::WebDriver::Chrome::Options.new(args: ['start-maximized'])
