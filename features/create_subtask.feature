@@ -8,22 +8,20 @@ Feature: As a ToDo App user
   Scenario: User should create a subtask
     Given I'm already logged on the system 
     When i click on My Tasks button
-    Then i should see all the created tasks so far
-    And i enter New Task Description in the task description field and hit enter
-    When i click on Manage Subtasks
+    And i enter Add Integration to API in the task description field and hit enter
+    When i click on Manage Subtasks button
     Then i should see a modal dialog
-    When i enter Subtask desc in subtask description field
-    And i enter 20/11/93 date
+    When i enter Check API Doc in subtask description field
+    And i enter 20/11/1993 date
     And i click on Add Subtask button
-    Then i should see subtask Subtask desc appended on the bottom part of the modal
+    Then i should see subtask Check API Doc appended on the bottom part of the modal
 
   @manage_subtaks
   Scenario: User should see the number of subtasks created on Manage Subtasks button
     Given I'm already logged on the system 
     When i click on My Tasks button
-    Then i should see all the created tasks so far
     And i enter New Task Description in the task description field and hit enter
-    When i click on Manage Subtasks
+    When i click on Manage Subtasks button
     Then i should see a modal dialog
     When i enter Subtask desc in subtask description field
     And i enter 20/11/93 date

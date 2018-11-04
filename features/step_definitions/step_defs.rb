@@ -1,8 +1,9 @@
 
-home_page    = AvenueCode::HomePage.new
-login_page   = AvenueCode::LoginPage.new
-tasks_helper = AvenueCode::TasksHelper.new
-tasks_page   = AvenueCode::TasksPage.new
+home_page     = AvenueCode::HomePage.new
+login_page    = AvenueCode::LoginPage.new
+tasks_helper  = AvenueCode::TasksHelper.new
+tasks_page    = AvenueCode::TasksPage.new
+subtasks_page = AvenueCode::SubTaskPage.new
 
 
 Given /^I'm already logged on the system$/ do
@@ -41,23 +42,25 @@ And /^i enter (.*) in the task description field and click on Add Task button$/ 
 end
 
 Then /^i should see a modal dialog$/ do
-	byebug
+	page.should have_css subtasks_page.class::MODAL
 end
 
 Then /^i enter (.*) in subtask description field$/ do |description|
-	byebug
+	subtasks_page.subtask_field.set(description)
 end
 
 Then /^i enter (.*) date$/ do |date|
-	byebug
+	subtasks_page.date.native.clear
+	subtasks_page.date.set(date)
 end
 
 Then /^i should see subtask (.*) appended on the bottom part of the modal$/ do |subtask|
-	byebug
+	sub_task = tasks_helper.text_found?(subtask, tasks_page.class::TASKS_CREATED)
+	expect(sub_task).to be true
 end
 
 And /^i click on Close button in the subtask modal dialog$/ do
-	byebug
+	subtasks_page.close.click
 end
 
 Then /^i should see (.*) created task(s) on Manage Subtasks button$/ do |amount|
