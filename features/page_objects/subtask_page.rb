@@ -4,7 +4,7 @@ module AvenueCode
         MODAL         = '.modal-dialog'
         SUBTASK_FIELD = '#new_sub_task'
         DATE          = '#dueDate'
-        CLOSE         = '.btn.btn-primary'
+        CLOSE         = '/html/body/div[4]/div/div/div[3]/button'
 
         def add_subtask_button
             page.find(ADD_SUBTASK)
@@ -19,7 +19,7 @@ module AvenueCode
         end
 
         def close
-            page.find(CLOSE)
+            page.find(:xpath, CLOSE)
         end
   end
 end

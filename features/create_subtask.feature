@@ -15,6 +15,9 @@ Feature: As a ToDo App user
     And i enter 20/11/1993 date
     And i click on Add Subtask button
     Then i should see subtask Check API Doc appended on the bottom part of the modal
+    And i click on Close button in the subtask modal dialog
+    And i remove Integration to API task from Created Task list
+    
 
   @manage_subtasks
   Scenario: User should see the number of subtasks created on Manage Subtasks button
@@ -23,10 +26,12 @@ Feature: As a ToDo App user
     And i enter Automate Features in the task description field and hit enter
     When i click on Manage Subtasks button
     Then i should see a modal dialog
-    When i enter Automate feature one in subtask description field
+    When i enter Automate Printer Replacement in subtask description field
     And i enter 20/11/93 date
     And i click on Add Subtask button
-    Then i should see subtask Automate feature one appended on the bottom part of the modal
+    Then i should see subtask Automate Printer Replacement appended on the bottom part of the modal
     When i click on Close button in the subtask modal dialog
-    Then i should see 1 created task(s) on Manage Subtasks button
+    Then i should see 1 created tasks on Manage Subtasks button
+    And i remove Automate Features task from Created Task list
+    
 

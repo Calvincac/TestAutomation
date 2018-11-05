@@ -29,11 +29,12 @@ end
 And /^i enter (.*) in the task description field and hit enter$/ do |task_description|
 	tasks_page.new_task.set(task_description)
 	tasks_page.new_task.send_keys :enter
+	@task_name = task_description
 end
 
 And /^i should see (.*) task created in the Created Tasks list$/ do |task_name|
 	task = tasks_helper.text_found?(task_name, tasks_page.class::TASKS_CREATED)
-	expect(task).to be true  
+	expect(task).to be true
 end
 
 And /^i enter (.*) in the task description field and click on Add Task button$/ do |description|
@@ -55,6 +56,7 @@ Then /^i enter (.*) date$/ do |date|
 end
 
 Then /^i should see subtask (.*) appended on the bottom part of the modal$/ do |subtask|
+	page.should have_css tasks_page.class::TASKS_CREATED 
 	sub_task = tasks_helper.text_found?(subtask, tasks_page.class::TASKS_CREATED)
 	expect(sub_task).to be true
 end
@@ -63,6 +65,14 @@ And /^i click on Close button in the subtask modal dialog$/ do
 	subtasks_page.close.click
 end
 
-Then /^i should see (.*) created task(s) on Manage Subtasks button$/ do |amount|
-	byebug
+Then /^i should see (.*) created tasks on Manage Subtasks button$/ do |amount|
+	elements = tasks_helper.return_element(@task_name, tasks_page.class::ALL_TASKS)
+	manage_button_text = elements.find(tasks_page.class::MANAGE_SUBTASKS).text
+	number_tasks = manage_button_text.scan(/\d+/).first
+	expect(number_tasks.to_i).to be amount.to_i
+end
+
+Then /^i remove (.*) task from Created Task list$/ do |task|
+	elements = tasks_helper.return_element(task, tasks_page.class::ALL_TASKS)
+	elements.find(tasks_page.class::REMOVE).click
 end

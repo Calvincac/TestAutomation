@@ -29,6 +29,15 @@ module AvenueCode
               end
             return false            
         end
+
+        def return_element(text, selector)
+            elements_list = all(selector)           
+            elements_list.each do |element| 
+                if element.text.include? text 
+                    return element
+                end
+            end
+        end
   end
 end
 
