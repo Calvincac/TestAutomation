@@ -14,65 +14,65 @@ Given /^I'm already logged on the system$/ do
 	login_page.sign_in.click	
 end
 
-When /^i click on (.*) button$/ do |button|
+When /^I click on (.*) button$/ do |button|
 	tasks_helper.click_button(button)
 end
 
-Then /^i should see all the created tasks so far$/ do
+Then /^I should see all the created tasks so far$/ do
 	page.should have_css tasks_page.class::TASKS_CREATED
 end
 
-Then /^i should see message (.*) on the top$/ do |message|
+Then /^I should see message (.*) on the top$/ do |message|
 	expect(message).to eq tasks_page.header.text
 end
 
-And /^i enter (.*) in the task description field and hit enter$/ do |task_description|
+And /^I enter (.*) in the task description field and hit enter$/ do |task_description|
 	tasks_page.new_task.set(task_description)
 	tasks_page.new_task.send_keys :enter
 	@task_name = task_description
 end
 
-And /^i should see (.*) task created in the Created Tasks list$/ do |task_name|
+And /^I should see (.*) task created in the Created Tasks list$/ do |task_name|
 	task = tasks_helper.text_found?(task_name, tasks_page.class::TASKS_CREATED)
 	expect(task).to be true
 end
 
-And /^i enter (.*) in the task description field and click on Add Task button$/ do |description|
+And /^I enter (.*) in the task description field and click on Add Task button$/ do |description|
 	tasks_page.new_task.set(description)
 	tasks_page.add_task.click
 end
 
-Then /^i should see a modal dialog$/ do
+Then /^I should see a modal dialog$/ do
 	page.should have_css subtasks_page.class::MODAL
 end
 
-Then /^i enter (.*) in subtask description field$/ do |description|
+Then /^I enter (.*) in subtask description field$/ do |description|
 	subtasks_page.subtask_field.set(description)
 end
 
-Then /^i enter (.*) date$/ do |date|
+Then /^I enter (.*) date$/ do |date|
 	subtasks_page.date.native.clear
 	subtasks_page.date.set(date)
 end
 
-Then /^i should see subtask (.*) appended on the bottom part of the modal$/ do |subtask|
+Then /^I should see subtask (.*) appended on the bottom part of the modal$/ do |subtask|
 	page.should have_css tasks_page.class::TASKS_CREATED 
 	sub_task = tasks_helper.text_found?(subtask, tasks_page.class::TASKS_CREATED)
 	expect(sub_task).to be true
 end
 
-And /^i click on Close button in the subtask modal dialog$/ do
+And /^I click on Close button in the subtask modal dialog$/ do
 	subtasks_page.close.click
 end
 
-Then /^i should see (.*) created tasks on Manage Subtasks button$/ do |amount|
+Then /^I should see (.*) created tasks on Manage Subtasks button$/ do |amount|
 	elements = tasks_helper.return_element(@task_name, tasks_page.class::ALL_TASKS)
 	manage_button_text = elements.find(tasks_page.class::MANAGE_SUBTASKS).text
 	number_tasks = manage_button_text.scan(/\d+/).first
 	expect(number_tasks.to_i).to be amount.to_i
 end
 
-Then /^i remove (.*) task from Created Task list$/ do |task|
+Then /^I remove (.*) task from Created Task list$/ do |task|
 	elements = tasks_helper.return_element(task, tasks_page.class::ALL_TASKS)
 	elements.find(tasks_page.class::REMOVE).click
 end
