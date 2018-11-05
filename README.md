@@ -5,8 +5,7 @@ The project should be run on a Linux machine.
 
 ### Prerequisites
 
-Linux <br>
-Chrome (versions higher than 66)
+Linux and Chrome (versions higher than 66)
 
 ## Ruby and Cucumber Setup
 In order to install everything that we need to run cucumber projects please, follow the instructions on the link [Ruby Setup](https://github.com/rvm/ubuntu_rvm)
