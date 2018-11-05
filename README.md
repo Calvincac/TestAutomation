@@ -24,10 +24,7 @@ touch user_and_passoword.txt
 
 ```
 
-You must add the followinf lines:
-
-```
-cd AvenueCodeAssigment 
+You must add your credentials as you can see below:
 
 ```
 user:calvincac@hotmail.com
@@ -35,10 +32,14 @@ password:arandompassword
 
 ```
 
-Avoid adding spaces to the file.
+Avoid adding spaces in the file.
+
+```
+
 cd AvenueCodeAssigment 
 
 ```
+
 ```
 bundle install 
 
