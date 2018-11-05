@@ -38,6 +38,21 @@ module AvenueCode
                 end
             end
         end
+
+        def read_file(file_name)
+            credentials = []
+            File.readlines(file_name).each do |line|
+                credentials << line
+            end
+            credentials
+        end
+
+        def credentials_from_file(file_name)
+            credentials = read_file(file_name)
+	        user = credentials.first.gsub('user:', '').delete("\n")
+            password = credentials.last.gsub('password:', '')
+            [user,password]
+        end
   end
 end
 

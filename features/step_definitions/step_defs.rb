@@ -7,10 +7,12 @@ subtasks_page = AvenueCode::SubTaskPage.new
 
 
 Given /^I'm already logged on the system$/ do
+	credentials = tasks_helper.credentials_from_file('user_and_password.txt')
+
 	visit 'https://qa-test.avenuecode.com/'
 	home_page.sign_in_button.click
-	login_page.email.set('calvincac@hotmail.com')
-	login_page.password.set('avenuecode')
+	login_page.email.set(credentials.first)
+	login_page.password.set(credentials.last)
 	login_page.sign_in.click	
 end
 
