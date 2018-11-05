@@ -17,7 +17,25 @@ and run the following commands:
 gem install bundler
 
 ```
+As this application is using user and password to log in the system. It is required that you create a file with user and password as it is displayed below.
+
 ```
+touch user_and_passoword.txt 
+
+```
+
+You must add the followinf lines:
+
+```
+cd AvenueCodeAssigment 
+
+```
+user:calvincac@hotmail.com
+password:arandompassword
+
+```
+
+Avoid adding spaces to the file.
 cd AvenueCodeAssigment 
 
 ```
