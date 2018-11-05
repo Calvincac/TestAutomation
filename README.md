@@ -17,6 +17,18 @@ and run the following commands:
 gem install bundler
 
 ```
+
+```
+
+cd AvenueCodeAssigment 
+
+```
+
+```
+bundle install 
+
+```
+
 As this application is using user and password to log in the system. It is required that you create a file with user and password as it is displayed below.
 
 ```
@@ -34,16 +46,6 @@ password:arandompassword
 
 Avoid adding spaces in the file.
 
-```
-
-cd AvenueCodeAssigment 
-
-```
-
-```
-bundle install 
-
-```
 
 ## Cucumber Scenarios
 
